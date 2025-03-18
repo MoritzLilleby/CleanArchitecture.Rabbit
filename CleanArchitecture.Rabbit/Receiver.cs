@@ -35,7 +35,7 @@ namespace CleanArchitecture.Rabbit
         {
             try
             {
-                var factory = new ConnectionFactory { HostName = "localhost", UserName = "guest", Password = "guest" };
+                var factory = new ConnectionFactory { HostName = "localhost:5672", UserName = "guest", Password = "guest" };
                 var connection = await factory.CreateConnectionAsync();
                 var channel = await connection.CreateChannelAsync();
 
