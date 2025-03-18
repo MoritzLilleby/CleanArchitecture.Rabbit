@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchitecture.Rabbit
 {
@@ -21,7 +16,7 @@ namespace CleanArchitecture.Rabbit
         {
             services.TryAddSingleton<ConnectionFactoryWrapper>();
 
-            services.AddSingleton<IRabbitSender, Sender>();
+            services.AddSingleton<Sender>();
         }
     }
 }
