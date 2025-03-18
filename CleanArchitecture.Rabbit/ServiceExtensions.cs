@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,26 +12,16 @@ namespace CleanArchitecture.Rabbit
     {
         public static void AddRabbitReceiver(this IServiceCollection services /*, IConfiguration configuration*/)
         {
+            services.TryAddSingleton<ConnectionFactoryWrapper>();
 
-            //services.AddSingleton<IConnectionFactory>(sp => new ConnectionFactory
-            //{
-            //    HostName = "localhost",
-            //    UserName = "guest",
-            //    Password = "guest"
-            //});
-
-            services.AddHostedService<Receiver>();
-
-            //services.Configure<RabbitOptions>(configuration.GetSection("Rabbit"));
+            services.AddSingleton<Receiver>();
         }
 
         public static void AddRabbitSender(this IServiceCollection services/*, IConfiguration configuration*/)
         {
+            services.TryAddSingleton<ConnectionFactoryWrapper>();
 
-            services.AddSingleton<IRabbitSenderProgram, Sender>();
-
-            //services.Configure<RabbitOptions>(configuration.GetSection("Rabbit"));
-
+            services.AddSingleton<IRabbitSender, Sender>();
         }
     }
 }
