@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<packageSources>
+		<clear />
+		<add key="github" value="https://nuget.pkg.github.com/MoritzLilleby/index.json" />
+	</packageSources>
+	<packageSourceCredentials>
+		<github>
+			<add key="Username" value="MoritzLilleby" />
+			<add key="ClearTextPassword" value="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" />
+		</github>
+	</packageSourceCredentials>
+</configuration>
