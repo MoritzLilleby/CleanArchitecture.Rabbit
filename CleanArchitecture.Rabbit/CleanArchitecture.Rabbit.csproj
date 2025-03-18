@@ -9,6 +9,7 @@
     <Authors>MLCorp</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Description>AMPQP sender reiceiver</Description>
+    <RepositoryUrl>https://github.com/MoritzLilleby/CleanArchitecture.Rabbit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
