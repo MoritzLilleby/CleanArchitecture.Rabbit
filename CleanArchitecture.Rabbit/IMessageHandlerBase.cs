@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Rabbit
 {
-    public abstract class MessageHandlerBase
+    public interface IMessageHandlerBase
     {
         [ReceivedMessageHandler("default", "Handles received messages")]
-        public abstract Task HandleMessageAsync(string message);
+        public Task HandleMessageAsync(string message);
     }
 }
