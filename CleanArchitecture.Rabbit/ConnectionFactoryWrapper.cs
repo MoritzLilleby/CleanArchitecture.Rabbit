@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Rabbit
 {
-    internal class ConnectionFactoryWrapper
+    public class ConnectionFactoryWrapper
     {
         private readonly Lazy<ConnectionFactory> _factory;
 

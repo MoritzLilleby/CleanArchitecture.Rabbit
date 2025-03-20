@@ -11,7 +11,7 @@ namespace CleanArchitecture.Rabbit
     {
         private readonly ConnectionFactory _factory;
 
-        internal Sender(ConnectionFactoryWrapper connectionFactoryWrapper)
+        public Sender(ConnectionFactoryWrapper connectionFactoryWrapper)
         {
             _factory = connectionFactoryWrapper.Factory;
         }
