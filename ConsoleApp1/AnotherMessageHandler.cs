@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ConsoleApp1;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +13,13 @@ namespace CleanArchitecture.Rabbit
     public class AnotherMyMessageHandler : IMessageHandlerBase
     {
         private readonly ILogger<AnotherMyMessageHandler> logger;
-        public AnotherMyMessageHandler(ILogger<AnotherMyMessageHandler> logger)
+        private readonly IHubContext<ChatHub> hubContext;
+
+        public AnotherMyMessageHandler(ILogger<AnotherMyMessageHandler> logger, IHubContext<ChatHub> hubContext)
         {
             this.logger=logger;
+            
+            this.hubContext=hubContext;
         }
 
         [ReceivedMessageHandler("description", "hello")]
@@ -20,6 +27,10 @@ namespace CleanArchitecture.Rabbit
         {
             logger.LogInformation($" [x] Received {message} on queue hello");
             // Process the message here
+
+            // Send message to all users in SignalR
+            await hubContext.Clients.All.SendAsync("ReceiveMessage", "You have received a message AnotherMyMessageHandler");
+
             await Task.CompletedTask;
         }
     

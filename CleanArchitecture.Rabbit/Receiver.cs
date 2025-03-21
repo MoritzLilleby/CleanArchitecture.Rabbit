@@ -71,7 +71,7 @@ namespace CleanArchitecture.Rabbit
                     }
 
                 };
-                await channel.BasicConsumeAsync(queue, autoAck: true, consumer: consumer);
+                await channel!.BasicConsumeAsync(queue, autoAck: true, consumer: consumer);
             }
             catch (Exception ex)
             {
